@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -38,13 +37,9 @@ public class ProdutoCategoriaFrame extends JFrame {
 		super("Produtos");
 		Container container = getContentPane();
 		setLayout(null);
-		
-		try {
-			this.categoriaController = new CategoriaController();
-			this.produtoController = new ProdutoController();
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+
+		this.categoriaController = new CategoriaController();
+		this.produtoController = new ProdutoController();
 
 		labelNome = new JLabel("Nome do Produto");
 		labelDescricao = new JLabel("Descrição do Produto");
@@ -71,7 +66,7 @@ public class ProdutoCategoriaFrame extends JFrame {
 		for (Categoria categoria : categorias) {
 			comboCategoria.addItem(categoria);
 		}
-		
+
 		textoNome.setBounds(10, 25, 265, 20);
 		textoDescricao.setBounds(10, 65, 265, 20);
 		comboCategoria.setBounds(10, 105, 265, 20);
